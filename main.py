@@ -29,7 +29,7 @@ gravatar = Gravatar(app,
 ##CONNECT TO DB
 
 DATA_BASE = os.getenv("DATABASE_URL")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', "sqlite:///blog.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
