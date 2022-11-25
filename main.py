@@ -80,8 +80,8 @@ class Comment(db.Model):
     post_commented = relationship("BlogPost", back_populates="comments_children")
 
 #
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
