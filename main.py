@@ -10,7 +10,7 @@ from forms import CreatePostForm, CreateUser, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 
 from functools import wraps
-
+import psycopg2
 from sqlalchemy import Column, ForeignKey, Integer, Table
 from sqlalchemy.orm import relationship, declarative_base
 
@@ -31,7 +31,7 @@ gravatar = Gravatar(app,
 
 ##CONNECT TO DB
 
-app.config['SQLALCHEMY_DATABASE_URI'] = (uri,  "sqlite:///blog.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
