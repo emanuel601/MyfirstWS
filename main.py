@@ -16,9 +16,9 @@ from sqlalchemy.orm import relationship, declarative_base
 
 import os
 
-uri = os.getenv("DATABASE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+# uri = os.getenv("DATABASE_URL")  # or other relevant config var
+# if uri.startswith("postgres://"):
+#     uri = uri.replace("postgres://", "postgresql://", 1)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -31,7 +31,7 @@ gravatar = Gravatar(app,
 
 ##CONNECT TO DB
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(("DATABASE_URL").replace("postgres://", "postgresql://", 1),  "sqlite:///blog.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(f"{os.environ.get('DATABASE_URL')}".replace("postgres://", "postgresql://", 1),  "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
