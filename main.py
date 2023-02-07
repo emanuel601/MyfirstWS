@@ -31,9 +31,9 @@ gravatar = Gravatar(app,
 
 ##CONNECT TO DB
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(f"{os.environ.get('DATABASE_URL')}".replace("postgres://", "postgresql://", 1),  "sqlite:///blog.db")
-data_base = f"{os.environ.get('DATABASE_URL')}".replace("postgres://", "postgresql://", 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = data_base
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(f"{os.environ.get('DATABASE_URL')}".replace("postgres://", "postgresql://", 1),  "sqlite:///blog.db")
+# data_base = f"{os.environ.get('DATABASE_URL')}".replace("postgres://", "postgresql://", 1)
+# app.config['SQLALCHEMY_DATABASE_URI'] = data_base
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -88,6 +88,7 @@ class Comment(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return UserBlog.query.get(int(user_id))
+
 
 def admin_only(f):
     @wraps(f)
